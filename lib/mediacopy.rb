@@ -1,5 +1,5 @@
 require "mediacopy/version"
+require "mediacopy/copy_engine"
 
-module Mediacopy
-  # Your code goes here...
+module MediaCopy
 end
