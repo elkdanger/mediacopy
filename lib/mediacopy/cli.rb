@@ -1,13 +1,14 @@
 require 'thor'
+require 'mediacopy/file_ledger'
 require 'mediacopy/basic_filter'
 require 'mediacopy/copy_engine'
 
 module MediaCopy
   # mediacopy CLI entry point
   class CLI < Thor
-    desc 'process <input path|file> <output path>', 'Processes the input directory or file into the output path'
+    desc 'process <input path|file> <output path>',
+         'Processes the input directory or file into the output path'
     def process(input, output)
-
       raise 'Output path must be a directory' unless File.directory?(output)
 
       if File.directory? input
@@ -24,5 +25,9 @@ module MediaCopy
       end
     end
 
+    desc 'destroy', 'Destroys the ledger cache'
+    def destroy
+      Ledger.destroy
+    end
   end
 end

@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
-require "mediacopy/cli"
+require 'mediacopy'
+require 'mediacopy/cli'
 
 MediaCopy::CLI.start
