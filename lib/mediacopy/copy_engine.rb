@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module MediaCopy
   # Masters copying files from one place to another
   class CopyEngine

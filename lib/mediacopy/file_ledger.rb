@@ -1,4 +1,5 @@
 require 'sqlite3'
+require 'fileutils'
 
 module MediaCopy
   # Methods for setting up/tearing down the ledger system
