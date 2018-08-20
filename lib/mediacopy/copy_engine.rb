@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'mediacopy/log'
 
 module MediaCopy
   # Masters copying files from one place to another
@@ -17,6 +18,7 @@ module MediaCopy
 
     def do_copy
       @files.each do |file|
+        Log.info "Copying #{file} to #{@output_path}"
         FileUtils.cp file, @output_path
       end
     end
