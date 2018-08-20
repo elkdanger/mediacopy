@@ -18,7 +18,7 @@ module MediaCopy
 
     def do_copy
       @files.each do |file|
-        Log.info "Copying #{file} to #{@output_path}"
+        Log.info "Copying #{file} to #{@output_path}", 'copy_engine'
         FileUtils.cp file, @output_path
       end
     end

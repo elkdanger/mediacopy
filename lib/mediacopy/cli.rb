@@ -2,6 +2,7 @@ require 'thor'
 require 'mediacopy/file_ledger'
 require 'mediacopy/basic_filter'
 require 'mediacopy/copy_engine'
+require 'mediacopy/log'
 
 module MediaCopy
   # mediacopy CLI entry point
@@ -28,6 +29,18 @@ module MediaCopy
     desc 'destroy', 'Destroys the ledger cache'
     def destroy
       Ledger.destroy
+    end
+
+    desc 'logs', 'Displays the application logs'
+    method_option 'clear', aliases: '-c', type: :boolean
+    def logs
+      if options[:clear]
+        Log.clear
+      else
+        File.readlines(Log::PATH).each do |line|
+          puts line
+        end
+      end
     end
   end
 end
