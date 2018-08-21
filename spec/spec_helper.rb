@@ -1,5 +1,9 @@
 require 'bundler/setup'
-require 'mediacopy'
+# require 'mediacopy'
+
+Dir[File.join(__dir__, '..', 'lib', '**', '*.rb')].each do |file|
+  require file
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

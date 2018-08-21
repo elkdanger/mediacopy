@@ -4,7 +4,11 @@ require 'mediacopy/log'
 module MediaCopy
   # Masters copying files from one place to another
   class CopyEngine
-    attr_reader :files, :output_path
+    attr_reader :files, :output_path, :transformers
+
+    def new(transformers)
+      @transformers = transformers ||= []
+    end
 
     def initialize(files, output_path)
       raise 'Invalid file list specified' if files.nil? ||
