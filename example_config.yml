@@ -1,0 +1,6 @@
+---
+rules:
+  transient:
+    - motogp
+locations:
+  transient:

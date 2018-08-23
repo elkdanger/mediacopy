@@ -26,9 +26,12 @@ module MediaCopy
       end
     end
 
-    desc 'destroy', 'Destroys the ledger cache'
-    def destroy
+    desc 'reset', 'Clears the cache'
+    method_option 'config', aliases: '-c', type: :boolean, desc: 'If specified, also resets configuration'
+    def reset
       Ledger.destroy
+
+      Config.remove if options[:config]
     end
 
     desc 'logs', 'Displays the application logs'
