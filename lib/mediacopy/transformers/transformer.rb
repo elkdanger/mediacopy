@@ -1,4 +1,5 @@
 require 'mediacopy/config'
+require 'byebug'
 
 module MediaCopy
   module Transformers
