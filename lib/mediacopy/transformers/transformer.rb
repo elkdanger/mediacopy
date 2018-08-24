@@ -1,24 +1,15 @@
 require 'mediacopy/config'
-require 'byebug'
 
 module MediaCopy
   module Transformers
     # Mixin for transformer types
     class Transformer
+      class << self
+        attr_reader :location, :ruleset, :on_matched
+      end
+
       def self.rules
         @rules ||= []
-      end
-
-      def self.location
-        @location
-      end
-
-      def self.ruleset
-        @ruleset
-      end
-
-      def self.on_matched
-        @on_matched
       end
 
       # Adds a match handler
@@ -54,6 +45,7 @@ module MediaCopy
 
       private
 
+      # Processes files where an 'on_matched' handler has been provided
       def process_on_matched
         unless respond_to? self.class.on_matched
           raise Exception, "#{self.class.name.split('').last} does not implement '#{self.class.on_matched}'"
@@ -64,6 +56,7 @@ module MediaCopy
         end
       end
 
+      # Processes files using a default processor
       def process_default
         config_location = Config.options[:locations][self.class.location]
 
